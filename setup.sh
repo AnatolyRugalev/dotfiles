@@ -17,3 +17,5 @@ for file in $files; do
 	mkdir -p $(dirname $HOME/$file)
 	ln -sf $dotfiles/$file $HOME/$file
 done
+
+xmonad --recompile
