@@ -201,8 +201,7 @@ avoidMaster = W.modify' $ \c -> case c of
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
-    [ ((modMask,                xK_Return   ), spawn "urxvt")
-    , ((modMask .|. shiftMask,  xK_c        ), spawn "xkill")
+    [ ((modMask .|. shiftMask,  xK_c        ), spawn "xkill")
     , ((modMask,                xK_q        ), kill)
     , ((modMask,                xK_b        ), sendMessage ToggleStruts)
 
@@ -241,7 +240,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask,  xK_h        ), sendMessage MirrorShrink)
     , ((modMask .|. shiftMask,  xK_l        ), sendMessage MirrorExpand)
 
-    -- quit, or restart
+    -- lock screen
     , ((modMask .|. shiftMask,  xK_q        ), spawn "xflock4")
 
     -- ungrab mouse cursor from applications which can grab it (games)
@@ -249,6 +248,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     
     -- rofi application launcher
     , ((modMask,                xK_d        ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
+    -- xfce4-terminal dropdown with tmux
+    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x /bin/sh -c tmux a || tmux'")
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
