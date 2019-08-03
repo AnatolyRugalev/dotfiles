@@ -104,7 +104,6 @@ POWERLINE_PATH="short"
 
 source $ZSH/oh-my-zsh.sh
 
-
-eval $(thefuck --alias)
-
 export PATH="$HOME/go/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+alias g='googler -n 4 -l en'

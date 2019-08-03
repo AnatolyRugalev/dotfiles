@@ -45,8 +45,8 @@ conf = ewmh xfceConfig
                                            <+> manageHook xfceConfig
         , layoutHook        = avoidStruts (myLayoutHook)
         , handleEventHook   = ewmhDesktopsEventHook <+> fullscreenEventHook 
-        , borderWidth       = 1
-        , focusedBorderColor= "red"
+        , borderWidth       = 0
+        , focusedBorderColor= "#003636"
         , normalBorderColor = "#444444"
         , workspaces        = map show [1 .. 9 :: Int]
         , modMask           = mod4Mask
@@ -66,15 +66,15 @@ main =
 
 -- Tabs theme --
 myTabTheme = defaultTheme
-    { activeColor           = "white"
-    , inactiveColor         = "grey"
+    { activeColor           = "#073642"
+    , inactiveColor         = "#002b36"
     , urgentColor           = "red"
-    , activeBorderColor     = "grey"
-    , inactiveBorderColor   = "grey"
-    , activeTextColor       = "black"
-    , inactiveTextColor     = "black"
-    , decoHeight            = 22
-    , fontName              = "xft:Liberation Sans:size=10"
+    , activeBorderColor     = "#93a1a1"
+    , inactiveBorderColor   = "#073642"
+    , activeTextColor       = "#2aa198"
+    , inactiveTextColor     = "#93a1a1"
+    , decoHeight            = 26
+    , fontName              = "xft:Nato Sans:size=9"
     }
 
 -- Layouts --
