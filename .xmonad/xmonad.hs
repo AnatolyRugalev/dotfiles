@@ -247,7 +247,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- rofi application launcher
     , ((modMask,                xK_d        ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
     -- xfce4-terminal dropdown with tmux
-    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x tmux attach'")
+    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x tmux new -A -s default'")
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
