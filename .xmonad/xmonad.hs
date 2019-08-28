@@ -36,6 +36,7 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.TwoPane
+import XMonad.Layout.DragPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 
@@ -78,7 +79,7 @@ myTabTheme = defaultTheme
     }
 
 -- Layouts --
-myLayoutHook = tab ||| full ||| tile
+myLayoutHook = tabB ||| full ||| tile ||| mtile ||| idea
   where
     rt      = ResizableTall 1 (2/100) (1/2) []
     -- normal vertical tile
@@ -93,15 +94,12 @@ myLayoutHook = tab ||| full ||| tile
     tabtile = named "TT"    $ combineTwoP (TwoPane 0.03 0.5)
                                           (tabB)
                                           (tabB)
-                                          (ClassName "firefox")
-    -- two layouts for gimp, tabs and tiling
-    gimp    = named "gimp"  $ combineTwoP (TwoPane 0.03 0.15)
-                                          (tabB) (reflectHoriz
-                                                  $ combineTwoP (TwoPane 0.03 0.2)
-                                                    tabB        (tabB ||| Grid)
-                                                                (Role "gimp-dock")
-                                                 )
-                                          (Role "gimp-toolbox")
+                                          (ClassName "Chromium")
+    idea = named "Idea"     $ combineTwoP (dragPane Horizontal 0.03 0.70)
+					  (tabB)
+					  (tabB)
+					  (ClassName "jetbrains-idea")
+
     -- fullscreen without tabs
     full        = named "[]"    $ noBorders Full
 
@@ -249,7 +247,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- rofi application launcher
     , ((modMask,                xK_d        ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
     -- xfce4-terminal dropdown with tmux
-    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x /bin/sh -c tmux a || tmux'")
+    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x tmux new -A -s default'")
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
