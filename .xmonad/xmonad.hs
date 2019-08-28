@@ -74,7 +74,7 @@ myTabTheme = defaultTheme
     , activeTextColor       = "#2aa198"
     , inactiveTextColor     = "#93a1a1"
     , decoHeight            = 26
-    , fontName              = "xft:Nato Sans:size=9"
+    , fontName              = "xft:Noto Sans:size=9"
     }
 
 -- Layouts --
