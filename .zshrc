@@ -46,7 +46,7 @@ DISABLE_AUTO_UPDATE="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-DEFAULT_USER="anatoly"
+DEFAULT_USER="$USER"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
