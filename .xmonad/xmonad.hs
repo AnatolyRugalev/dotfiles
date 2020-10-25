@@ -39,6 +39,7 @@ import XMonad.Layout.TwoPane
 import XMonad.Layout.DragPane
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
+import XMonad.Util.Scratchpad
 
 conf = ewmh xfceConfig
         { manageHook        = pbManageHook <+> myManageHook
@@ -195,6 +196,10 @@ avoidMaster = W.modify' $ \c -> case c of
     W.Stack t [] (r:rs) -> W.Stack t [r] rs
     otherwise           -> c
 
+
+alacritty = "alacritty --title tmux --class scratchpad --live-config-reload -e tmux new -A -s default"
+terminalAction = scratchpadSpawnActionCustom alacritty
+
 -- Keyboard --
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
@@ -247,7 +252,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- rofi application launcher
     , ((modMask,                xK_d        ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
     -- xfce4-terminal dropdown with tmux
-    , ((modMask,                xK_F1       ), spawn "/bin/sh -c 'xfce4-terminal --title tmux --drop-down --hold -x tmux new -A -s default'")
+    , ((modMask,                xK_F1       ), terminalAction)
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
