@@ -53,6 +53,7 @@ conf = ewmh xfceConfig
         , workspaces        = map show [1 .. 9 :: Int]
         , modMask           = mod4Mask
         , keys              = myKeys
+        , focusFollowsMouse = False
          }
     where
         tall                = ResizableTall 1 (3/100) (1/2) []
@@ -197,7 +198,7 @@ avoidMaster = W.modify' $ \c -> case c of
     otherwise           -> c
 
 
-alacritty = "alacritty --title tmux --class scratchpad --live-config-reload -e tmux new -A -s default"
+alacritty = "alacritty --title tmux --class scratchpad -e tmux new -A -s default"
 terminalAction = scratchpadSpawnActionCustom alacritty
 
 -- Keyboard --
@@ -209,8 +210,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,                xK_b        ), sendMessage ToggleStruts)
 
     -- layouts
-    , ((modMask,                xK_space    ), sendMessage NextLayout)
-    , ((modMask .|. shiftMask,  xK_space    ), setLayout $ XMonad.layoutHook conf)
+    , ((modMask,                xK_d    ), sendMessage NextLayout)
+    , ((modMask .|. shiftMask,  xK_d    ), setLayout $ XMonad.layoutHook conf)
 
     -- floating layer stuff
     , ((modMask,                xK_t        ), withFocused $ windows . W.sink)
@@ -250,7 +251,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,                xK_i        ), spawn "xdotool key XF86Ungrab")
     
     -- rofi application launcher
-    , ((modMask,                xK_d        ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
+    , ((modMask .|. shiftMask,  xK_space    ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
+    , ((modMask,                xK_space    ), spawn "albert show")
+    , ((0, xK_Print                         ), spawn "xfce4-screenshooter --clipboard --region")
     -- xfce4-terminal dropdown with tmux
     , ((modMask,                xK_F1       ), terminalAction)
     ]

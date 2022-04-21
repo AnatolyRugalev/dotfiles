@@ -1,110 +1,140 @@
-monokai_pro: &monokai_pro
+monokai_pro:
   # Default colors
+  &monokai_pro
   primary:
     background: '#2D2A2E'
     foreground: '#FCFCFA'
 
   # Normal colors
   normal:
-    black:   '#403E41'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#FC9867'
+    black: '#403E41'
+    red: '#FF6188'
+    green: '#A9DC76'
+    yellow: '#FFD866'
+    blue: '#FC9867'
     magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
-    white:   '#FCFCFA'
+    cyan: '#78DCE8'
+    white: '#FCFCFA'
 
   # Bright colors
   bright:
-    black:   '#727072'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#FC9867'
+    black: '#727072'
+    red: '#FF6188'
+    green: '#A9DC76'
+    yellow: '#FFD866'
+    blue: '#FC9867'
     magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
-    white:   '#FCFCFA'
+    cyan: '#78DCE8'
+    white: '#FCFCFA'
 
-dracula: &dracula
+dracula:
   # Default colors
+  &dracula
   primary:
     background: '#282a36'
     foreground: '#f8f8f2'
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#ff5555'
-    green:   '#50fa7b'
-    yellow:  '#f1fa8c'
-    blue:    '#caa9fa'
+    black: '#000000'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#caa9fa'
     magenta: '#ff79c6'
-    cyan:    '#8be9fd'
-    white:   '#bfbfbf'
+    cyan: '#8be9fd'
+    white: '#bfbfbf'
 
   # Bright colors
   bright:
-    black:   '#575b70'
-    red:     '#ff6e67'
-    green:   '#5af78e'
-    yellow:  '#f4f99d'
-    blue:    '#caa9fa'
+    black: '#575b70'
+    red: '#ff6e67'
+    green: '#5af78e'
+    yellow: '#f4f99d'
+    blue: '#caa9fa'
     magenta: '#ff92d0'
-    cyan:    '#9aedfe'
-    white:   '#e6e6e6'
+    cyan: '#9aedfe'
+    white: '#e6e6e6'
 
-one_dark: &one_dark
+one_dark:
+  &one_dark
   primary:
     background: '#282c34'
     foreground: '#abb2bf'
   cursor:
-    text:       CellBackground
-    cursor:     '#528bff' # syntax-cursor-color
+    text: CellBackground
+    cursor: '#528bff' # syntax-cursor-color
   selection:
-    text:       CellForeground
+    text: CellForeground
     background: '#3e4451' # syntax-selection-color
   normal:
-    black:      '#5c6370' # mono-3
-    red:        '#e06c75' # red 1
-    green:      '#98c379'
-    yellow:     '#e5c07b' # orange 2
-    blue:       '#61afef'
-    magenta:    '#c678dd'
-    cyan:       '#56b6c2'
-    white:      '#828997' # mono-2
+    black: '#5c6370' # mono-3
+    red: '#e06c75' # red 1
+    green: '#98c379'
+    yellow: '#e5c07b' # orange 2
+    blue: '#61afef'
+    magenta: '#c678dd'
+    cyan: '#56b6c2'
+    white: '#828997' # mono-2
 
-solarized: &solarized
+solarized:
   # Default colors
+  &solarized
   primary:
     background: '#002b36' # base03
     foreground: '#839496' # base0
 
   # Cursor colors
   cursor:
-    text:   '#002b36' # base03
+    text: '#002b36' # base03
     cursor: '#839496' # base0
 
   # Normal colors
   normal:
-    black:   '#073642' # base02
-    red:     '#dc322f' # red
-    green:   '#859900' # green
-    yellow:  '#b58900' # yellow
-    blue:    '#268bd2' # blue
+    black: '#073642' # base02
+    red: '#dc322f' # red
+    green: '#859900' # green
+    yellow: '#b58900' # yellow
+    blue: '#268bd2' # blue
     magenta: '#d33682' # magenta
-    cyan:    '#2aa198' # cyan
-    white:   '#eee8d5' # base2
+    cyan: '#2aa198' # cyan
+    white: '#eee8d5' # base2
 
   # Bright colors
   bright:
-    black:   '#002b36' # base03
-    red:     '#cb4b16' # orange
-    green:   '#586e75' # base01
-    yellow:  '#657b83' # base00
-    blue:    '#839496' # base0
+    black: '#002b36' # base03
+    red: '#cb4b16' # orange
+    green: '#586e75' # base01
+    yellow: '#657b83' # base00
+    blue: '#839496' # base0
     magenta: '#6c71c4' # violet
-    cyan:    '#93a1a1' # base1
-    white:   '#fdf6e3' # base3
+    cyan: '#93a1a1' # base1
+    white: '#fdf6e3' # base3
 
-colors: *solarized
+colors:
+  primary:
+    background: '#222324'
+    foreground: '#BABABA'
+
+  # Normal colors
+  normal:
+    black: '#000000'
+    red: '#E8341C'
+    green: '#68C256'
+    yellow: '#F2D42C'
+    blue: '#1C98E8'
+    magenta: '#8E69C9'
+    cyan: '#1C98E8'
+    white: '#BABABA'
+
+  # Bright colors
+  bright:
+    black: '#666666'
+    red: '#E05A4F'
+    green: '#77B869'
+    yellow: '#EFD64B'
+    blue: '#387CD3'
+    magenta: '#957BBE'
+    cyan: '#3D97E2'
+    white: '#BABABA'
+theme: Darkside

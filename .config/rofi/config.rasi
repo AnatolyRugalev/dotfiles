@@ -1,5 +1,4 @@
 configuration {
-	theme: "solarized";
 /*	modi: "window,run,ssh";*/
 /*	width: 50;*/
 /*	lines: 15;*/
@@ -144,3 +143,6 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
+//@theme "solarized"
+//@theme "/usr/share/rofi/themes/solarized.rasi"
+@theme "/usr/share/rofi/themes/glue_pro_blue.rasi"
