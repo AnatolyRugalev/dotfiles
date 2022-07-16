@@ -138,3 +138,5 @@ colors:
     cyan: '#3D97E2'
     white: '#BABABA'
 theme: Darkside
+font:
+  size: 9

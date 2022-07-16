@@ -27,6 +27,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.RefocusLast
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.ComboP
 import XMonad.Layout.Grid
@@ -41,19 +42,19 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Util.Scratchpad
 
-conf = ewmh xfceConfig
+conf = ewmhFullscreen $ ewmh xfceConfig
         { manageHook        = pbManageHook <+> myManageHook
                                            <+> manageDocks
                                            <+> manageHook xfceConfig
         , layoutHook        = avoidStruts (myLayoutHook)
-        , handleEventHook   = ewmhDesktopsEventHook <+> fullscreenEventHook 
-        , borderWidth       = 0
-        , focusedBorderColor= "#003636"
-        , normalBorderColor = "#444444"
+        , borderWidth       = 6
+        , focusedBorderColor= "#073642"
+        , normalBorderColor = "#93a1a1"
         , workspaces        = map show [1 .. 9 :: Int]
         , modMask           = mod4Mask
         , keys              = myKeys
         , focusFollowsMouse = False
+        , clickJustFocuses  = False
          }
     where
         tall                = ResizableTall 1 (3/100) (1/2) []
@@ -64,24 +65,23 @@ main =
     xmonad $ conf
         { startupHook       = startupHook conf
                             >> setWMName "LG3D" -- Java app focus fix
-        , logHook           =  ewmhDesktopsLogHook
          }
 
 -- Tabs theme --
-myTabTheme = defaultTheme
-    { activeColor           = "#073642"
+myTabTheme = def {
+      activeColor           = "#073642"
     , inactiveColor         = "#002b36"
     , urgentColor           = "red"
     , activeBorderColor     = "#93a1a1"
     , inactiveBorderColor   = "#073642"
     , activeTextColor       = "#2aa198"
     , inactiveTextColor     = "#93a1a1"
-    , decoHeight            = 26
-    , fontName              = "xft:Noto Sans:size=9"
+    , decoHeight            = 52
+    , fontName              = "xft:Noto Sans:size=20"
     }
 
 -- Layouts --
-myLayoutHook = tabB ||| full ||| tile ||| mtile ||| idea
+myLayoutHook = rt ||| rtile ||| tab ||| tabB ||| full ||| tile ||| mtile
   where
     rt      = ResizableTall 1 (2/100) (1/2) []
     -- normal vertical tile
@@ -97,10 +97,6 @@ myLayoutHook = tabB ||| full ||| tile ||| mtile ||| idea
                                           (tabB)
                                           (tabB)
                                           (ClassName "Chromium")
-    idea = named "Idea"     $ combineTwoP (dragPane Horizontal 0.03 0.70)
-					  (tabB)
-					  (tabB)
-					  (ClassName "jetbrains-idea")
 
     -- fullscreen without tabs
     full        = named "[]"    $ noBorders Full
@@ -125,7 +121,7 @@ role = stringProperty "WM_WINDOW_ROLE"
 pbManageHook :: ManageHook
 pbManageHook = composeAll $ concat
     [ [ manageDocks ]
-    , [ manageHook defaultConfig ]
+    , [ manageHook def ]
     , [ isDialog --> doCenterFloat ]
     , [ isFullscreen --> doFullFloat ]
     , [ fmap not isDialog --> doF avoidMaster ]
@@ -210,50 +206,48 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,                xK_b        ), sendMessage ToggleStruts)
 
     -- layouts
-    , ((modMask,                xK_d    ), sendMessage NextLayout)
-    , ((modMask .|. shiftMask,  xK_d    ), setLayout $ XMonad.layoutHook conf)
+    , ((modMask,                xK_grave    ), sendMessage NextLayout)
+    , ((modMask .|. shiftMask,  xK_grave    ), setLayout $ XMonad.layoutHook conf)
 
     -- floating layer stuff
     , ((modMask,                xK_t        ), withFocused $ windows . W.sink)
 
     -- refresh
     , ((modMask,                xK_r        ), refresh)
+    , ((modMask .|. shiftMask,  xK_r        ), spawn "xmonad --restart")
 
     -- focus
-    , ((modMask,                xK_Tab      ), windows W.focusDown)
-    , ((modMask,                xK_Left     ), windows W.focusUp)
-    , ((modMask,                xK_Right    ), windows W.focusDown)
-    , ((modMask,                xK_k        ), windows W.focusDown)
-    , ((modMask,                xK_j        ), windows W.focusUp)
+    , ((modMask,                xK_Tab   ), windows W.focusDown)
+    , ((modMask,                xK_a     ), windows W.focusUp)
+    , ((modMask,                xK_d     ), windows W.focusDown)
 
     -- swapping
-    , ((modMask .|. shiftMask,  xK_k        ), windows W.swapDown)
-    , ((modMask .|. shiftMask,  xK_j        ), windows W.swapUp)
-    , ((modMask .|. shiftMask,  xK_Right    ), windows W.swapDown)
-    , ((modMask .|. shiftMask,  xK_Left     ), windows W.swapUp)
+    , ((modMask .|. shiftMask,  xK_d     ), windows W.swapDown)
+    , ((modMask .|. shiftMask,  xK_a     ), windows W.swapUp)
 
-    , ((modMask,                xK_s        ), sendMessage $ SwapWindow)
+--    , ((modMask,                xK_x        ), sendMessage $ SwapWindow)
 
     -- increase or decrease number of windows in the master area
     , ((modMask,                xK_comma    ), sendMessage (IncMasterN 1))
     , ((modMask,                xK_period   ), sendMessage (IncMasterN (-1)))
 
     -- resizing
-    , ((modMask,                xK_h        ), sendMessage Shrink)
-    , ((modMask,                xK_l        ), sendMessage Expand)
-    , ((modMask .|. shiftMask,  xK_h        ), sendMessage MirrorShrink)
-    , ((modMask .|. shiftMask,  xK_l        ), sendMessage MirrorExpand)
+    , ((modMask,                xK_s        ), sendMessage Shrink)
+    , ((modMask,                xK_w        ), sendMessage Expand)
+    , ((modMask .|. shiftMask,  xK_s        ), sendMessage MirrorShrink)
+    , ((modMask .|. shiftMask,  xK_w        ), sendMessage MirrorExpand)
 
     -- lock screen
     , ((modMask .|. shiftMask,  xK_q        ), spawn "xflock4")
 
     -- ungrab mouse cursor from applications which can grab it (games)
     , ((modMask,                xK_i        ), spawn "xdotool key XF86Ungrab")
-    
-    -- rofi application launcher
-    , ((modMask .|. shiftMask,  xK_space    ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
-    , ((modMask,                xK_space    ), spawn "albert show")
+
+    -- application launchers
+    , ((modMask,                xK_space    ), spawn "rofi -combi-modi drun,window -show combi -modi combi")
+    , ((modMask,                xK_p        ), spawn "/opt/enpass/Enpass showassistant")
     , ((0, xK_Print                         ), spawn "xfce4-screenshooter --clipboard --region")
+
     -- xfce4-terminal dropdown with tmux
     , ((modMask,                xK_F1       ), terminalAction)
     ]
@@ -268,6 +262,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-{w,e,r} %! Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r} %! Move client to screen 1, 2, or 3
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_w, xK_e] [0..]
+        | (key, sc) <- zip [xK_x, xK_z] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
