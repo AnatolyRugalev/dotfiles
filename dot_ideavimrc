@@ -1,0 +1,213 @@
+source ~/.vimrc
+set notimeout
+let mapleader = "\<Space>"
+set scrolloff=10
+set relativenumber
+Plug 'machakann/vim-highlightedyank'
+set NERDtree
+set incsearch
+set easymotion
+set clipboard+=unnamed
+set clipboard+=ideaput
+set ideajoin
+set idearefactormode=visual
+
+function! CmdCommand(letter, command)
+    execute 'map' '<D-' . a:letter . '>' a:command
+    execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
+endfunction
+
+function! CmdAAction(letter, action)
+    execute 'map' '<D-A><D-' . a:letter . '>' '<Action>(' . a:action . ')'
+    execute 'nnoremap' '<C-A><C-' . a:letter . '>' '<nop>'
+endfunction
+
+function! AltAction(letter, action)
+    execute 'map' '<A-' . a:letter . '>' '<Action>(' . a:action . ')'
+    execute 'sethandler' '<A-' . a:letter . '>' 'a:vim'
+endfunction
+
+function! AltAAction(letter, action)
+    execute 'map' '<A-A><A-' . a:letter . '>' '<Action>(' . a:action . ')'
+    execute 'sethandler' '<A-A>A-' . a:letter . '>' 'a:vim'
+endfunction
+
+function! CmdAction(letter, action)
+    execute 'map' '<D-' . a:letter . '>' '<Action>(' . a:action . ')'
+    execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
+endfunction
+
+function! CmdRemap(letter)
+    execute 'sethandler' '<D-' . a:letter . '>' 'a:vim'
+    execute 'inoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
+    execute 'nnoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
+endfunction
+
+call CmdRemap('Q')
+call CmdRemap('W')
+call CmdRemap('E')
+call CmdRemap('R')
+call CmdRemap('T')
+call CmdRemap('Y')
+call CmdRemap('U')
+call CmdRemap('I')
+call CmdRemap('O')
+call CmdRemap('P')
+call CmdRemap('A')
+call CmdRemap('S')
+call CmdRemap('D')
+call CmdRemap('F')
+call CmdRemap('G')
+call CmdRemap('H')
+call CmdRemap('J')
+call CmdRemap('K')
+call CmdRemap('L')
+call CmdRemap('Z')
+call CmdRemap('X')
+call CmdRemap('C')
+call CmdRemap('V')
+call CmdRemap('B')
+call CmdRemap('N')
+call CmdRemap('M')
+
+" Configuration management
+nnoremap <Leader>.v :e ~/.ideavimrc<CR>
+nnoremap <Leader>.t :e ~/.tmux.conf<CR>
+nnoremap <Leader>.y :e ~/.config/yabai/yabairc<CR>
+nnoremap <Leader>.s :e ~/.config/skhd/skhdrc<CR>
+nnoremap <Leader>.k :e ~/.config/karabiner/karabiner.json<CR>
+map <Leader>.r <Action>(IdeaVim.ReloadVimRc.reload)
+
+" Coding
+map <Leader>e <Action>(ShowErrorDescription)
+map <Leader>p <Action>(ParameterInfo)
+map <Leader>P <Action>(QuickJavaDoc)
+map <Leader>cl <Action>(ReformatCode)
+map <Leader>ci <Action>(ImplementMethods)
+map <Leader>a <Action>(ShowIntentionActions)
+map <Leader>fr <Action>(RenameFile)
+map <Leader>cR <Action>(Refactorings.QuickListPopupAction)
+map <Leader>cr <Action>(RenameElement)
+map <Leader>n <Action>(NewElementSamePlace)
+
+" Navigation
+call CmdAction('O', 'Back')
+call CmdAction('I', 'Forward')
+map gz <Action>(Back)
+map gf <Action>(Forward)
+map gn <Action>(GotoNextError)
+map gN <Action>(GotoPreviousError)
+map gi <Action>(GotoImplementation)
+map gI <Action>(GotoSuperMethod)
+map gd <Action>(GotoDeclaration)
+map gD <Action>(GotoTypeDeclaration)
+map gw <Action>(SelectInProjectView)
+
+
+map <D-G> G
+nnoremap GG G
+map Gu <Action>(FindUsages)
+map Gs <Action>(GotoSymbol)
+map Gn <Action>(GotoClass)
+map Gf <Action>(GotoFile)
+map Ga <Action>(SearchEverywhere)
+map Gp <Action>($LRU)
+
+" Tool Windows
+call CmdAction("P", "JumpToLastWindow")
+call CmdAction("X", "HideAllWindows")
+
+" Search
+map / <Action>(Find)
+call CmdAction("/", "FindInPath")
+map ? <Action>(Replace)
+call CmdAction("?", "ReplaceInPath")
+map n <Action>(FindNext)
+map N <Action>(FindPrevious)
+
+" Misc
+map <Leader>s <Action>(SaveAll)
+map u <Action>($Undo)
+map U <Action>($Redo)
+call CmdAction('Z', '$Undo')
+call CmdAction('R', '$Redo')
+call AltAction('T', 'Tool_External Tools_tmux')
+nnoremap <D-C> Y
+vnoremap <D-C> y
+nnoremap <D-V> p
+inoremap <D-V> <C-R>+
+
+
+" Debugging
+map <Leader>D <Action>(Rerun)
+map <Leader>dD <Action>(DebugClass)
+map <Leader>dR <Action>(ChooseRunConfiguration)
+map <Leader>db <Action>(ToggleLineBreakpoint)
+map <Leader>di <Action>(StepInto)
+map <Leader>dd <Action>(StepOver)
+map <Leader>do <Action>(StepOut)
+map <Leader>dr <Action>(Resume)
+map <Leader>dS <Action>(Stop)
+
+" Git
+map <Leader>gg <Action>(Vcs.QuickListPopupAction)
+map <Leader>ga <Action>(ChangesView.AddUnversioned)
+map <Leader>gc <Action>(CheckinProject)
+map <Leader>gb <Action>(Git.Branches)
+map <Leader>gn <Action>(Git.CreateNewBranch)
+map <Leader>gp <Action>(Git.Pull)
+map <Leader>gf <Action>(Git.Fetch)
+map <Leader>gP <Action>(Vcs.Push)
+map <Leader>gT <Action>(Git.Tag)
+map <Leader>gs <Action>(Git.Stash)
+map <Leader>gS <Action>(Git.Unstash)
+map <Leader>go <Action>(Github.Open.In.Browser)
+map <Leader>gy <Action>(Github.Copy.Link.To.GitHub)
+map <Leader>gR <Action>(ChangesView.Revert)
+
+" Tabs
+map <Leader>tt <Action>(ShowNavBar)
+map <D-T><D-T> <Action>(ShowNavBar)
+map <Leader>tw <Action>(CloseContent)
+map <D-T><D-W> <Action>(CloseContent)
+map <Leader>tp <Action>(PinActiveEditorTab)
+map <D-T><D-P> <Action>(PinActiveEditorTab)
+call CmdAction('L', 'NextTab')
+call CmdAction('H', 'PreviousTab')
+map <D-T><D-J> <Action>(com.mnw.tabmover.actions.MoveTabToNextSplitter)
+map <D-T><D-K> <Action>(com.mnw.tabmover.actions.MoveTabToPreviousSplitter)
+map <D-T><D-L> <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
+map <D-T><D-H> <Action>(com.mnw.tabmover.actions.MoveTabUpAction)
+
+" Splitters
+map <Leader>Sw <Action>(CloseAllEditors)
+map <D-S><D-W> <Action>(CloseAllEditors)
+map <Leader>Ss <Action>(SplitHorizontally)
+map <D-S><D-S> <Action>(SplitHorizontally)
+map <Leader>Sv <Action>(SplitVertically)
+map <D-S><D-V> <Action>(SplitVertically)
+call CmdAction('J', 'NextSplitter')
+call CmdAction('K', 'PrevSplitter')
+
+vnoremap p "_dP
+nnoremap X "_X
+nnoremap x "_x
+vnoremap x "_x
+nnoremap C "_C
+nnoremap c "_c
+vnoremap c "_c
+
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+nnoremap <Home> ^
+nnoremap <End> $
+nnoremap <PageDown> <C-D>
+nnoremap <PageUp> <C-U>
+
+" One handed modifiers
+" Swap h and l
+nnoremap h l
+nnoremap l h
