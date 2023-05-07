@@ -1,4 +1,5 @@
 source ~/.vimrc
+
 set notimeout
 let mapleader = "\<Space>"
 set scrolloff=10
@@ -12,14 +13,43 @@ set clipboard+=ideaput
 set ideajoin
 set idearefactormode=visual
 
-function! CmdCommand(letter, command)
-    execute 'map' '<D-' . a:letter . '>' a:command
-    execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
+let g:uname = "Linux"
+
+function! CtrlCommand(letter, command)
+    if g:uname == "Darwin"
+        execute 'map' '<D-' . a:letter . '>' a:command
+        execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
+    else
+        execute 'map' '<C-' . a:letter . '>' a:command
+    endif
 endfunction
 
-function! CmdAAction(letter, action)
-    execute 'map' '<D-A><D-' . a:letter . '>' '<Action>(' . a:action . ')'
-    execute 'nnoremap' '<C-A><C-' . a:letter . '>' '<nop>'
+function! CtrlAction(letter, action)
+    if g:uname == "Darwin"
+        execute 'map' '<D-' . a:letter . '>' '<Action>(' . a:action . ')'
+        execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
+    else
+        execute 'map' '<C-' . a:letter . '>' '<Action>(' . a:action . ')'
+    endif
+endfunction
+
+function! CtrlRemap(letter)
+    if g:uname == "Darwin"
+        execute 'sethandler' '<D-' . a:letter . '>' 'a:vim'
+        execute 'inoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
+        execute 'nnoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
+    else
+        execute 'sethandler' '<C-' . a:letter . '>' 'a:vim'
+    endif
+endfunction
+
+function! CtrlAAction(letter, action)
+    if g:name == "Darwin"
+        execute 'map' '<D-A><D-' . a:letter . '>' '<Action>(' . a:action . ')'
+        execute 'nnoremap' '<C-A><C-' . a:letter . '>' '<nop>'
+    else
+        execute 'map' '<C-A><C-' . a:letter . '>' '<Action>(' . a:action . ')'
+    endif
 endfunction
 
 function! AltAction(letter, action)
@@ -32,43 +62,33 @@ function! AltAAction(letter, action)
     execute 'sethandler' '<A-A>A-' . a:letter . '>' 'a:vim'
 endfunction
 
-function! CmdAction(letter, action)
-    execute 'map' '<D-' . a:letter . '>' '<Action>(' . a:action . ')'
-    execute 'nnoremap' '<C-' . a:letter . '>' '<nop>'
-endfunction
 
-function! CmdRemap(letter)
-    execute 'sethandler' '<D-' . a:letter . '>' 'a:vim'
-    execute 'inoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
-    execute 'nnoremap' '<D-' . a:letter . '>' '<C-' . a:letter . '>'
-endfunction
-
-call CmdRemap('Q')
-call CmdRemap('W')
-call CmdRemap('E')
-call CmdRemap('R')
-call CmdRemap('T')
-call CmdRemap('Y')
-call CmdRemap('U')
-call CmdRemap('I')
-call CmdRemap('O')
-call CmdRemap('P')
-call CmdRemap('A')
-call CmdRemap('S')
-call CmdRemap('D')
-call CmdRemap('F')
-call CmdRemap('G')
-call CmdRemap('H')
-call CmdRemap('J')
-call CmdRemap('K')
-call CmdRemap('L')
-call CmdRemap('Z')
-call CmdRemap('X')
-call CmdRemap('C')
-call CmdRemap('V')
-call CmdRemap('B')
-call CmdRemap('N')
-call CmdRemap('M')
+call CtrlRemap('Q')
+call CtrlRemap('W')
+call CtrlRemap('E')
+call CtrlRemap('R')
+call CtrlRemap('T')
+call CtrlRemap('Y')
+call CtrlRemap('U')
+call CtrlRemap('I')
+call CtrlRemap('O')
+call CtrlRemap('P')
+call CtrlRemap('A')
+call CtrlRemap('S')
+call CtrlRemap('D')
+call CtrlRemap('F')
+call CtrlRemap('G')
+call CtrlRemap('H')
+call CtrlRemap('J')
+call CtrlRemap('K')
+call CtrlRemap('L')
+call CtrlRemap('Z')
+call CtrlRemap('X')
+call CtrlRemap('C')
+call CtrlRemap('V')
+call CtrlRemap('B')
+call CtrlRemap('N')
+call CtrlRemap('M')
 
 " Configuration management
 nnoremap <Leader>.v :e ~/.ideavimrc<CR>
@@ -91,8 +111,8 @@ map <Leader>cr <Action>(RenameElement)
 map <Leader>n <Action>(NewElementSamePlace)
 
 " Navigation
-call CmdAction('O', 'Back')
-call CmdAction('I', 'Forward')
+call CtrlAction('O', 'Back')
+call CtrlAction('I', 'Forward')
 map gz <Action>(Back)
 map gf <Action>(Forward)
 map gn <Action>(GotoNextError)
@@ -102,7 +122,6 @@ map gI <Action>(GotoSuperMethod)
 map gd <Action>(GotoDeclaration)
 map gD <Action>(GotoTypeDeclaration)
 map gw <Action>(SelectInProjectView)
-
 
 map <D-G> G
 nnoremap GG G
@@ -114,14 +133,14 @@ map Ga <Action>(SearchEverywhere)
 map Gp <Action>($LRU)
 
 " Tool Windows
-call CmdAction("P", "JumpToLastWindow")
-call CmdAction("X", "HideAllWindows")
+call CtrlAction("P", "JumpToLastWindow")
+call CtrlAction("X", "HideAllWindows")
 
 " Search
 map / <Action>(Find)
-call CmdAction("/", "FindInPath")
+call CtrlAction("/", "FindInPath")
 map ? <Action>(Replace)
-call CmdAction("?", "ReplaceInPath")
+call CtrlAction("?", "ReplaceInPath")
 map n <Action>(FindNext)
 map N <Action>(FindPrevious)
 
@@ -129,14 +148,13 @@ map N <Action>(FindPrevious)
 map <Leader>s <Action>(SaveAll)
 map u <Action>($Undo)
 map U <Action>($Redo)
-call CmdAction('Z', '$Undo')
-call CmdAction('R', '$Redo')
+call CtrlAction('Z', '$Undo')
+call CtrlAction('R', '$Redo')
 call AltAction('T', 'Tool_External Tools_tmux')
 nnoremap <D-C> Y
 vnoremap <D-C> y
 nnoremap <D-V> p
 inoremap <D-V> <C-R>+
-
 
 " Debugging
 map <Leader>D <Action>(Rerun)
@@ -172,8 +190,8 @@ map <Leader>tw <Action>(CloseContent)
 map <D-T><D-W> <Action>(CloseContent)
 map <Leader>tp <Action>(PinActiveEditorTab)
 map <D-T><D-P> <Action>(PinActiveEditorTab)
-call CmdAction('L', 'NextTab')
-call CmdAction('H', 'PreviousTab')
+call CtrlAction('L', 'NextTab')
+call CtrlAction('H', 'PreviousTab')
 map <D-T><D-J> <Action>(com.mnw.tabmover.actions.MoveTabToNextSplitter)
 map <D-T><D-K> <Action>(com.mnw.tabmover.actions.MoveTabToPreviousSplitter)
 map <D-T><D-L> <Action>(com.mnw.tabmover.actions.MoveTabDownAction)
@@ -186,28 +204,5 @@ map <Leader>Ss <Action>(SplitHorizontally)
 map <D-S><D-S> <Action>(SplitHorizontally)
 map <Leader>Sv <Action>(SplitVertically)
 map <D-S><D-V> <Action>(SplitVertically)
-call CmdAction('J', 'NextSplitter')
-call CmdAction('K', 'PrevSplitter')
-
-vnoremap p "_dP
-nnoremap X "_X
-nnoremap x "_x
-vnoremap x "_x
-nnoremap C "_C
-nnoremap c "_c
-vnoremap c "_c
-
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-nnoremap <Home> ^
-nnoremap <End> $
-nnoremap <PageDown> <C-D>
-nnoremap <PageUp> <C-U>
-
-" One handed modifiers
-" Swap h and l
-nnoremap h l
-nnoremap l h
+call CtrlAction('J', 'NextSplitter')
+call CtrlAction('K', 'PrevSplitter')
