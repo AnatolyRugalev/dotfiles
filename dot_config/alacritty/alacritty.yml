@@ -121,7 +121,7 @@ colors:
   *one_dark
 font:
   normal:
-    family: "MesloLGM Nerd Font"
+    family: "MesloLGM Nerd Font Mono"
 
 key_bindings:
   - { key: A,         mods: Command,       chars: "\x01"                       }
