@@ -121,8 +121,7 @@ colors:
   *one_dark
 font:
   normal:
-    family: "Source Code Pro for Powerline"
-  size: 14
+    family: "SauceCodePro Nerd Font Mono"
 
 key_bindings:
   - { key: A,         mods: Command,       chars: "\x01"                       }
