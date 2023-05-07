@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+WINDOW_ID=$(/opt/homebrew/bin/yabai -m query --windows | /usr/local/bin/jq -c '.[] | select (.app=="Alacritty") | .id')
+CURRENT_WINDOW_ID=$(/opt/homebrew/bin/yabai -m query --windows --window | /usr/local/bin/jq -c '.id')
+
+if [ -z "$WINDOW_ID" ]; then
+    exit 1
+fi
+
+if [[ "$WINDOW_ID" == "$CURRENT_WINDOW_ID" ]]; then
+    /opt/homebrew/bin/yabai -m window $WINDOW_ID --space last
+    exit 0
+fi
+
+/opt/homebrew/bin/yabai -m window $WINDOW_ID --space mouse --focus

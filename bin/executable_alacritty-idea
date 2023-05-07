@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -ex
+
+currentWindowID="$(/opt/homebrew/bin/yabai -m query --windows --window | /usr/local/bin/jq -c '.id')"
+alacrittyWindowID=$(/opt/homebrew/bin/yabai -m query --windows | /usr/local/bin/jq -c '.[] | select (.app=="Alacritty") | .id')
+if [[ -z "$currentWindowID" ]]; then
+  echo "No window selected"
+  exit 1
+fi
+
+if [[ -z "$alacrittyWindowID" ]]; then
+  echo "Alacritty is not open"
+  exit 1
+fi
+
+if [[ "$currentWindowID" == "$alacrittyWindowID" ]]; then
+  lastWindow=$(cat /tmp/.alacritty-last-window-"$alacrittyWindowID")
+  yabai -m window --focus $lastWindow
+  exit 0
+fi
+
+echo "$currentWindowID" > /tmp/.alacritty-last-window-$alacrittyWindowID
+yabai -m window --focus $alacrittyWindowID

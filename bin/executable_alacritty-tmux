@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+if [[ "$2" == "restore" ]]; then
+  yabai -m window --focus "$(cat /tmp/alacritty-tmux-$1)"
+  exit 0
+fi
+
+window="$(/opt/homebrew/bin/yabai -m query --windows --window)"
+currentWindowID="$(echo "$window" | /usr/local/bin/jq -c '.id')"
+echo $currentWindowID > /tmp/alacritty-tmux-$1
+fit() {
+  termWindow="$1"
+  ideaWindowID="$2"
+  wX="$(echo "$termWindow" | /usr/local/bin/jq -c '.frame.x')"
+  wY="$(echo "$termWindow" | /usr/local/bin/jq -c '.frame.y')"
+  wW="$(echo "$termWindow" | /usr/local/bin/jq -c '.frame.w')"
+  wH="$(echo "$termWindow" | /usr/local/bin/jq -c '.frame.h')"
+  # TODO
+}
+
+windowID=$(/opt/homebrew/bin/yabai -m query --windows | /usr/local/bin/jq -c ".[] | select (.app==\"Alacritty\" and .title==\"$1\") | .id")
+if [[ -n "$windowID" ]]; then
+  tmux new-window -t $1 -n $1 || tmux select-window -t $1:$1
+  yabai -m window --focus $windowID
+  fit "$window" "$windowID"
+  exit 0
+fi
+tmux new-session -d -s $1 -t main || true
+tmux new-window -t $1 -n $1 || tmux select-window -t $1:$1
+(sleep 1 && tmux set-option -t $1 destroy-unattached) &
+open -a Alacritty -n --args --command tmux attach-session -t $1
+windowID=$(/opt/homebrew/bin/yabai -m query --windows | /usr/local/bin/jq -c ".[] | select (.app==\"Alacritty\" and .title==\"$1\") | .id")
+yabai -m window $windowID --toggle float
+fit $windowID
+wait
