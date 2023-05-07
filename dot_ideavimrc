@@ -13,7 +13,7 @@ set clipboard+=ideaput
 set ideajoin
 set idearefactormode=visual
 
-let g:uname = "Linux"
+let g:uname = system('uname -a')
 
 function! CtrlCommand(letter, command)
     if g:uname == "Darwin"
@@ -91,12 +91,12 @@ call CtrlRemap('N')
 call CtrlRemap('M')
 
 " Configuration management
-nnoremap <Leader>.v :e ~/.ideavimrc<CR>
-nnoremap <Leader>.t :e ~/.tmux.conf<CR>
-nnoremap <Leader>.y :e ~/.config/yabai/yabairc<CR>
-nnoremap <Leader>.s :e ~/.config/skhd/skhdrc<CR>
-nnoremap <Leader>.k :e ~/.config/karabiner/karabiner.json<CR>
-map <Leader>.r <Action>(IdeaVim.ReloadVimRc.reload)
+nnoremap <Leader>xv :e ~/.ideavimrc<CR>
+nnoremap <Leader>xt :e ~/.tmux.conf<CR>
+nnoremap <Leader>xy :e ~/.config/yabai/yabairc<CR>
+nnoremap <Leader>xs :e ~/.config/skhd/skhdrc<CR>
+nnoremap <Leader>xk :e ~/.config/karabiner/karabiner.json<CR>
+map <Leader>xr <Action>(IdeaVim.ReloadVimRc.reload)
 
 " Coding
 map <Leader>e <Action>(ShowErrorDescription)
