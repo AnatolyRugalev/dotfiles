@@ -43,6 +43,14 @@
           "type": "session"
         },
         {
+          "type": "aws",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#ffffff",
+          "background": "#FFA400",
+          "template": "  {{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
+        },
+        {
           "background": "#DA627D",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
