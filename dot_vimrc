@@ -1,0 +1,23 @@
+
+vnoremap p "_dP
+nnoremap X "_X
+nnoremap x "_x
+vnoremap x "_x
+nnoremap C "_C
+nnoremap c "_c
+vnoremap c "_c
+
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+nnoremap <Home> ^
+nnoremap <End> $
+nnoremap <PageDown> <C-D>
+nnoremap <PageUp> <C-U>
+
+" One handed modifiers
+" Swap h and l
+nnoremap h l
+nnoremap l h
