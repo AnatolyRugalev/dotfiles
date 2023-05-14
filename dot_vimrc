@@ -21,3 +21,5 @@ nnoremap <PageUp> <C-U>
 " Swap h and l
 nnoremap h l
 nnoremap l h
+vnoremap h l
+vnoremap l h
