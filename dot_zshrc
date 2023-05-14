@@ -2,5 +2,6 @@ eval "$(oh-my-posh init zsh --config .config/zsh/config.omp.json)"
 
 PATH=$PATH:$HOME/bin:$HOME/bin-local:/opt/intellij-idea-ultimate-edition/bin
 
-bindkey  "^[[1~"   beginning-of-line
-bindkey  "^[[4~"   end-of-line
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
