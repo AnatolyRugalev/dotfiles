@@ -1,6 +1,7 @@
 eval "$(oh-my-posh init zsh --config .config/zsh/config.omp.json)"
 
 PATH=$PATH:$HOME/bin:$HOME/bin-local:/opt/intellij-idea-ultimate-edition/bin
+EDITOR=nvim
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	source /usr/share/zsh-antidote/antidote.zsh
