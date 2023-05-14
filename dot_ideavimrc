@@ -138,9 +138,8 @@ call CtrlAction("X", "HideAllWindows")
 
 " Search
 map / <Action>(Find)
-call CtrlAction("/", "FindInPath")
 map ? <Action>(Replace)
-call CtrlAction("?", "ReplaceInPath")
+call CtrlAction("/", "CommentByLineComment")
 map n <Action>(FindNext)
 map N <Action>(FindPrevious)
 
