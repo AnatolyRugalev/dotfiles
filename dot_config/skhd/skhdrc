@@ -139,7 +139,7 @@
 ctrl - q : yabai -m window --close
 ctrl - 0x24 : open -a "Alfred 5"
 
-ctrl - z : yabai -m display --focus next || yabai -m display --focus prev
+ctrl - z : yabai -m display --focus next || yabai -m display --focus first
 
 # toggle float
 ctrl - b : yabai -m window --toggle float --grid 4:4:1:1:2:2
