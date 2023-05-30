@@ -26,3 +26,9 @@ yabai -m rule --add app="Alfred" sticky=on layer=above manage=off
 yabai -m rule --add app="System Settings" sticky=on layer=above manage=off
 yabai -m rule --add app="LinearMouse" sticky=on layer=above manage=off
 
+# regex that matches JetBrains apps
+IDEA='^IntelliJ IDEA$'
+
+# float all JetBrains apps
+yabai -m rule --add app="${IDEA}" manage=off
+yabai -m rule --add app="${IDEA}" title="^$"  manage=on
