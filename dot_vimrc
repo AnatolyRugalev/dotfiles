@@ -16,10 +16,3 @@ nnoremap <Home> ^
 nnoremap <End> $
 nnoremap <PageDown> <C-D>
 nnoremap <PageUp> <C-U>
-
-" One handed modifiers
-" Swap h and l
-nnoremap h l
-nnoremap l h
-vnoremap h l
-vnoremap l h
