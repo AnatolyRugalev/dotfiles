@@ -28,6 +28,7 @@ one_dark:
 colors:
   *one_dark
 font:
+  size: 14
   normal:
     family: "MesloLGM Nerd Font Mono"
 
