@@ -1,15 +1,33 @@
 eval "$(oh-my-posh init zsh --config $HOME/.config/zsh/config.omp.json)"
 
-PATH=$PATH:$HOME/bin:$HOME/bin-local:/opt/intellij-idea-ultimate-edition/bin
+PATH=$PATH:$HOME/bin:$HOME/bin-local
 EDITOR=nvim
+
+## History file configuration
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+[ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
+[ "$SAVEHIST" -lt 10000 ] && SAVEHIST=10000
+
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+
+setopt NO_BEEP
+
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	source /usr/share/zsh-antidote/antidote.zsh
+	PATH=$PATH:$HOME/bin:$HOME/bin-local:/opt/intellij-idea-ultimate-edition/bin
 else
 	source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 fi
 antidote load
 
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
