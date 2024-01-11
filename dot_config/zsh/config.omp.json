@@ -35,11 +35,19 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "foreground": "#ffffff",
+          "background": "#444444",
+          "template": "{{ .HostName }}"
+        },
+        {
           "background": "#9A348E",
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "template": "{{ .UserName }} ",
+          "template": "{{ if not (eq .UserName \"toly\") }}{{ .UserName }} {{ end }}",
           "type": "session"
         },
         {
