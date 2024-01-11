@@ -4,14 +4,13 @@ return {
 		config = function()
 			local null_ls = require("null-ls")
 			null_ls.setup({
-
 				sources = {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.diagnostics.eslint,
 					null_ls.builtins.completion.spell,
 				},
 			})
-			vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "<leader>cl", vim.lsp.buf.format, {})
 		end,
 	},
 	{
@@ -19,7 +18,11 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("mason-null-ls").setup({
-				ensure_installed = { "stylua", "jq" },
+				ensure_installed = {
+					"stylua",
+					"jq",
+					"gofumpt",
+				},
 			})
 		end,
 	},
