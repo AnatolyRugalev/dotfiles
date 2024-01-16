@@ -29,3 +29,18 @@ vim.keymap.set("v", "c", '"_c', {})
 -- navigation
 vim.keymap.set("n", "gz", "<C-O>", {})
 vim.keymap.set("n", "gf", "<C-I>", {})
+
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+
+-- terminal
+vim.keymap.set("n", "<C-_>", ":ToggleTerm<CR>")
+vim.keymap.set("t", "<C-_>", "<C-\\><C-n><C-w>h:ToggleTerm<CR>")
+vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n><C-w>h", { silent = true })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h:wincmd h<CR>", { silent = true })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>h:wincmd j<CR>", { silent = true })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>h:wincmd k<CR>", { silent = true })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>h:wincmd l<CR>", { silent = true })
+
