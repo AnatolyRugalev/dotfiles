@@ -47,16 +47,8 @@
           "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "template": "{{ if not (eq .UserName \"toly\") }}{{ .UserName }} {{ end }}",
+          "template": "{{ if not (eq .UserName \"toly\") }}{{ if not (eq .UserName \"anatoliirugalev\" ) }}{{ .UserName }} {{ end }}{{ end }}",
           "type": "session"
-        },
-        {
-          "type": "aws",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#ffffff",
-          "background": "#FFA400",
-          "template": "  {{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
         },
         {
           "background": "#DA627D",
