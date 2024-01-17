@@ -91,19 +91,17 @@ key = "G"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\b"
+chars = "\u0008"
 key = "H"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\t"
+chars = "\u0009"
 key = "I"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = """
-
-"""
+chars = "\u000A"
 key = "J"
 mods = "Command"
 
@@ -113,12 +111,12 @@ key = "K"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\f"
+chars = "\u000C"
 key = "L"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\r"
+chars = "\u000D"
 key = "M"
 mods = "Command"
 
@@ -193,7 +191,7 @@ key = "A"
 mods = "Alt"
 
 [[keyboard.bindings]]
-chars = "+b"
+chars = "\u001Bb"
 key = "B"
 mods = "Alt"
 
@@ -500,6 +498,11 @@ mods = "Alt"
 [[keyboard.bindings]]
 chars = "\u0000"
 key = "Space"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001F"
+key = "Slash"
 mods = "Command"
 
 [[keyboard.bindings]]
