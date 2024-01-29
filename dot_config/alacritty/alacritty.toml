@@ -580,6 +580,16 @@ action = "Paste"
 key = "V"
 mods = "Command|Shift"
 
+[[keyboard.bindings]]
+key = "Back"
+mods = "Control"
+chars = "\u001B\u007F"
+
+[[keyboard.bindings]]
+key = "Back"
+mods = "Command"
+chars = "\u001B\u007F"
+
 [shell]
 args = ["--login"]
 program = "/bin/zsh"

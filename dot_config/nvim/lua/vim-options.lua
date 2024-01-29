@@ -9,6 +9,8 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>s", ":wa<CR>", {})
 vim.keymap.set("n", "<leader>qq", ":qa<CR>", {})
+vim.keymap.set("n", "U", "<C-r>", {})
+vim.keymap.set("i", "<M-BS>", "<C-w>", {})
 
 -- tab motions
 vim.keymap.set("n", "<Tab>", ">>_", {})
@@ -34,6 +36,8 @@ vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true })
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true })
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+
+
 
 -- terminal
 vim.keymap.set("n", "<C-_>", ":ToggleTerm<CR>")
