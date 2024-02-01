@@ -32,13 +32,6 @@ vim.keymap.set("v", "c", '"_c', {})
 vim.keymap.set("n", "gz", "<C-O>", {})
 vim.keymap.set("n", "gf", "<C-I>", {})
 
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true })
-
-
-
 -- terminal
 vim.keymap.set("n", "<C-_>", ":ToggleTerm<CR>")
 vim.keymap.set("t", "<C-_>", "<C-\\><C-n><C-w>h:ToggleTerm<CR>")
@@ -48,4 +41,18 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>h:wincmd j<CR>", { silent = true }
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>h:wincmd k<CR>", { silent = true })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>h:wincmd l<CR>", { silent = true })
 
+-- splits and windows
+vim.keymap.set("n", "<M-h>", ":wincmd h<CR>", { silent = true })
+vim.keymap.set("n", "<M-j>", ":wincmd j<CR>", { silent = true })
+vim.keymap.set("n", "<M-k>", ":wincmd k<CR>", { silent = true })
+vim.keymap.set("n", "<M-l>", ":wincmd l<CR>", { silent = true })
 
+vim.keymap.set("n", "<M-s>", "<C-w><C-v>", { silent = true })
+vim.keymap.set("n", "<M-S>", "<C-w>s", { silent = true })
+vim.keymap.set("n", "<M-/>", "<C-w>x", { silent = true })
+vim.keymap.set("n", "<M-q>", ":q<CR>", { silent = true })
+
+vim.keymap.set("n", "<M-H>", ":vertical resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<M-L>", ":vertical resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<M-J>", ":resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<M-K>", ":resize +2<CR>", { silent = true })

@@ -20,24 +20,30 @@ return {
 				dapui.close()
 			end
 			dapui.setup()
-			require("dap-go").setup()
-			local widgets = require("dap.ui.widgets")
 
+			local dapgo = require("dap-go")
+			dapgo.setup()
+
+			local widgets = require("dap.ui.widgets")
+			vim.keymap.set({ "n", "v" }, "<leader>dh", widgets.hover)
+			vim.keymap.set({ "n", "v" }, "<leader>dp", widgets.preview)
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
+			vim.keymap.set("n", "<leader>dB", dap.clear_breakpoints)
+			vim.keymap.set("n", "<leader>dr", dap.run_last)
+			vim.keymap.set("n", "<leader>dc", dap.continue)
+			vim.keymap.set("n", "<leader>dt", dapgo.debug_test)
+			vim.keymap.set("n", "<leader>dq", dap.terminate)
 			vim.keymap.set("n", "<F5>", dap.continue)
 			vim.keymap.set("n", "<F10>", dap.step_over)
 			vim.keymap.set("n", "<F11>", dap.step_into)
 			vim.keymap.set("n", "<F12>", dap.step_out)
-			vim.keymap.set("n", "<Leader>b", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<Leader>B", dap.set_breakpoint)
-			vim.keymap.set("n", "<Leader>dl", dap.run_last)
-			vim.keymap.set({ "n", "v" }, "<Leader>dh", widgets.hover)
-			vim.keymap.set({ "n", "v" }, "<Leader>dp", widgets.preview)
-			vim.keymap.set("n", "<Leader>df", function()
+			vim.keymap.set("n", "<leader>df", function()
 				widgets.centered_float(widgets.frames)
 			end)
-			vim.keymap.set("n", "<Leader>ds", function()
+			vim.keymap.set("n", "<leader>ds", function()
 				widgets.centered_float(widgets.scopes)
 			end)
 		end,
 	},
 }
+
