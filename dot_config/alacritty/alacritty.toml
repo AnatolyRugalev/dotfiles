@@ -21,7 +21,7 @@ background = "#3e4451"
 text = "CellForeground"
 
 [font]
-size = 12
+size = 11
 
 [font.normal]
 family = "MesloLGM Nerd Font Mono"
@@ -589,6 +589,161 @@ chars = "\u001B\u007F"
 key = "Back"
 mods = "Command"
 chars = "\u001B\u007F"
+
+[[keyboard.bindings]]
+key = "Comma"
+mods = "Control|Shift"
+chars = "\u001B[44;6u"
+
+[[keyboard.bindings]]
+key = "Period"
+mods = "Control|Shift"
+chars = "\u001B[46;6u"
+
+[[keyboard.bindings]]
+key = "Slash"
+mods = "Control|Shift"
+chars = "\u001B[47;6u"
+
+[[keyboard.bindings]]
+key = ";"
+mods = "Control|Shift"
+chars = "\u001B[59;6u"
+
+[[keyboard.bindings]]
+key = "'"
+mods = "Control|Shift"
+chars = "\u001B[39;6u"
+
+[[keyboard.bindings]]
+key = "A"
+mods = "Control|Shift"
+chars = "\u001B[65;6u"
+
+[[keyboard.bindings]]
+key = "B"
+mods = "Control|Shift"
+chars = "\u001B[66;6u"
+
+# [[keyboard.bindings]]
+# key = "C"
+# mods = "Control|Shift"
+# chars = "\u001B[67;6u"
+
+[[keyboard.bindings]]
+key = "D"
+mods = "Control|Shift"
+chars = "\u001B[68;6u"
+
+[[keyboard.bindings]]
+key = "E"
+mods = "Control|Shift"
+chars = "\u001B[69;6u"
+
+[[keyboard.bindings]]
+key = "F"
+mods = "Control|Shift"
+chars = "\u001B[70;6u"
+
+[[keyboard.bindings]]
+key = "G"
+mods = "Control|Shift"
+chars = "\u001B[71;6u"
+
+[[keyboard.bindings]]
+key = "H"
+mods = "Control|Shift"
+chars = "\u001B[72;6u"
+
+[[keyboard.bindings]]
+key = "I"
+mods = "Control|Shift"
+chars = "\u001B[73;6u"
+
+[[keyboard.bindings]]
+key = "J"
+mods = "Control|Shift"
+chars = "\u001B[74;6u"
+
+[[keyboard.bindings]]
+key = "K"
+mods = "Control|Shift"
+chars = "\u001B[75;6u"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control|Shift"
+chars = "\u001B[76;6u"
+
+[[keyboard.bindings]]
+key = "M"
+mods = "Control|Shift"
+chars = "\u001B[77;6u"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Control|Shift"
+chars = "\u001B[78;6u"
+
+[[keyboard.bindings]]
+key = "O"
+mods = "Control|Shift"
+chars = "\u001B[79;6u"
+
+[[keyboard.bindings]]
+key = "P"
+mods = "Control|Shift"
+chars = "\u001B[80;6u"
+
+[[keyboard.bindings]]
+key = "Q"
+mods = "Control|Shift"
+chars = "\u001B[81;6u"
+
+[[keyboard.bindings]]
+key = "R"
+mods = "Control|Shift"
+chars = "\u001B[82;6u"
+
+[[keyboard.bindings]]
+key = "S"
+mods = "Control|Shift"
+chars = "\u001B[83;6u"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Control|Shift"
+chars = "\u001B[84;6u"
+
+[[keyboard.bindings]]
+key = "U"
+mods = "Control|Shift"
+chars = "\u001B[85;6u"
+
+# [[keyboard.bindings]]
+# key = "V"
+# mods = "Control|Shift"
+# chars = "\u001B[86;6u"
+
+[[keyboard.bindings]]
+key = "W"
+mods = "Control|Shift"
+chars = "\u001B[87;6u"
+
+[[keyboard.bindings]]
+key = "X"
+mods = "Control|Shift"
+chars = "\u001B[88;6u"
+
+[[keyboard.bindings]]
+key = "Y"
+mods = "Control|Shift"
+chars = "\u001B[89;6u"
+
+[[keyboard.bindings]]
+key = "Z"
+mods = "Control|Shift"
+chars = "\u001B[90;6u"
 
 [shell]
 args = ["--login"]
