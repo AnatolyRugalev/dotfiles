@@ -10,7 +10,7 @@ return {
 					null_ls.builtins.completion.spell,
 				},
 			})
-			vim.keymap.set("n", "<leader>cl", vim.lsp.buf.format, {})
+			vim.keymap.set("n", "<leader>cl", vim.lsp.buf.format, { desc = "Format buffer"})
 		end,
 	},
 	{

@@ -4,13 +4,15 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
 vim.api.nvim_set_option("clipboard", "unnamedplus")
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
+vim.opt.wrap = false
 vim.wo.relativenumber = true
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>s", ":wa<CR>", {})
-vim.keymap.set("n", "<leader>qq", ":qa<CR>", {})
-vim.keymap.set("n", "U", "<C-r>", {})
-vim.keymap.set("i", "<M-BS>", "<C-w>", {})
+vim.keymap.set("n", "<leader>s", ":wa<CR>", { desc = "Save all", silent = true })
+vim.keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Quit" })
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+vim.keymap.set("i", "<M-BS>", "<C-w>", { desc = "Delete word" })
 
 -- tab motions
 vim.keymap.set("n", "<Tab>", ">>_", {})
@@ -29,8 +31,9 @@ vim.keymap.set("n", "c", '"_c', {})
 vim.keymap.set("v", "c", '"_c', {})
 
 -- navigation
-vim.keymap.set("n", "gz", "<C-O>", {})
-vim.keymap.set("n", "gf", "<C-I>", {})
+vim.keymap.set("n", "gz", "<C-O>", { desc = "Jump back" })
+vim.keymap.set("n", "gf", "<C-I>", { desc = "Jump forward" })
+vim.keymap.set("n", "<Home>", "^", {})
 
 -- terminal
 vim.keymap.set("n", "<C-_>", ":ToggleTerm<CR>")
@@ -51,6 +54,7 @@ vim.keymap.set("n", "<M-s>", "<C-w><C-v>", { silent = true })
 vim.keymap.set("n", "<M-S>", "<C-w>s", { silent = true })
 vim.keymap.set("n", "<M-/>", "<C-w>x", { silent = true })
 vim.keymap.set("n", "<M-q>", ":q<CR>", { silent = true })
+vim.keymap.set({ "i", "v" }, "<M-q>", "<esc>:q<CR>", { silent = true })
 
 vim.keymap.set("n", "<M-H>", ":vertical resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<M-L>", ":vertical resize +2<CR>", { silent = true })
