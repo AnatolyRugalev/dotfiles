@@ -9,8 +9,6 @@ vim.opt.wrap = false
 vim.wo.relativenumber = true
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>s", ":wa<CR>", { desc = "Save all", silent = true })
-vim.keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Quit" })
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 vim.keymap.set("i", "<M-BS>", "<C-w>", { desc = "Delete word" })
 
@@ -44,19 +42,31 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>h:wincmd j<CR>", { silent = true }
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>h:wincmd k<CR>", { silent = true })
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>h:wincmd l<CR>", { silent = true })
 
+-- quickfix
+vim.keymap.set("n", "<C-j>", ":cnext<CR>", { desc = "Next quickfix", silent = true })
+vim.keymap.set("n", "<C-k>", ":cprev<CR>", { desc = "Prev quickfix", silent = true })
+vim.keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "Open quickfix", silent = true })
+vim.keymap.set("n", "<leader>qq", ":cclose<CR>", { desc = "Close quickfix", silent = true })
+
+-- notifications
+vim.keymap.set("n", "<leader>nq", ":Noice dismiss<CR>", { desc = "Dismiss notification", silent = true })
+
 -- splits and windows
-vim.keymap.set("n", "<M-h>", ":wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<M-j>", ":wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<M-k>", ":wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<M-l>", ":wincmd l<CR>", { silent = true })
+vim.keymap.set("n", "H", ":wincmd h<CR>", { silent = true, desc = "Window ←" })
+vim.keymap.set("n", "J", ":wincmd j<CR>", { silent = true, desc = "Window ↓" })
+vim.keymap.set("n", "K", ":wincmd k<CR>", { silent = true, desc = "Window ↑" })
+vim.keymap.set("n", "L", ":wincmd l<CR>", { silent = true, desc = "Window →" })
 
-vim.keymap.set("n", "<M-s>", "<C-w><C-v>", { silent = true })
-vim.keymap.set("n", "<M-S>", "<C-w>s", { silent = true })
-vim.keymap.set("n", "<M-/>", "<C-w>x", { silent = true })
-vim.keymap.set("n", "<M-q>", ":q<CR>", { silent = true })
-vim.keymap.set({ "i", "v" }, "<M-q>", "<esc>:q<CR>", { silent = true })
+vim.keymap.set("n", "<M-H>", ":vertical resize -2<CR>", { silent = true, desc = "Resize vertical -" })
+vim.keymap.set("n", "<M-L>", ":vertical resize +2<CR>", { silent = true, desc = "Resize vertical +"})
+vim.keymap.set("n", "<M-J>", ":resize -2<CR>", { silent = true, desc = "Resize horizontal -"})
+vim.keymap.set("n", "<M-K>", ":resize +2<CR>", { silent = true, desc = "Resize horizontal +"})
 
-vim.keymap.set("n", "<M-H>", ":vertical resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<M-L>", ":vertical resize +2<CR>", { silent = true })
-vim.keymap.set("n", "<M-J>", ":resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<M-K>", ":resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<leader>wv", "<C-w><C-v>", { silent = true, desc = "Split vertical" })
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { silent = true, desc = "Split horizontal" })
+vim.keymap.set("n", "<leader>wx", "<C-w>x", { silent = true, desc = "Swap windows" })
+vim.keymap.set("n", "<leader>wq", ":q<CR>", { silent = true, desc = "Close window" })
+
+vim.keymap.set("n", "<leader>s", ":wa<CR>", { desc = "Save all", silent = true })
+vim.keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "Quit" })
+

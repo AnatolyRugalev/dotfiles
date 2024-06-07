@@ -14,10 +14,10 @@ return {
 				dapui.open()
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
+				-- dapui.close()
 			end
 			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
+				-- dapui.close()
 			end
 			dapui.setup()
 
@@ -32,7 +32,10 @@ return {
 			vim.keymap.set("n", "<leader>dr", dap.run_last, { desc = "Rerun" })
 			vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })
 			vim.keymap.set("n", "<leader>dt", dapgo.debug_test, { desc = "Debug test (Go)" })
-			vim.keymap.set("n", "<leader>dq", dap.terminate, { desc = "Terminate" })
+			vim.keymap.set("n", "<leader>dq", function()
+				dap.terminate()
+				dapui.close()
+			end, { desc = "Terminate" })
 			vim.keymap.set("n", "<F4>", dap.step_over, { desc = "Step over" })
 			vim.keymap.set("n", "<F5>", dap.step_out, { desc = "Step out" })
 			vim.keymap.set("n", "<F6>", dap.step_into, { desc = "Step into" })

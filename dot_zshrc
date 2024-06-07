@@ -1,7 +1,7 @@
 PNPPSHOST=$(hostname)
 eval "$(oh-my-posh init zsh --config $HOME/.config/zsh/config.omp.json)"
 
-PATH=$PATH:$HOME/bin:$HOME/go/bin:$HOME/bin-local
+PATH=$PATH:$HOME/bin:$HOME/go/bin:$HOME/bin-local:$HOME/.config/emacs/bin
 EDITOR=nvim
 
 ## History file configuration
