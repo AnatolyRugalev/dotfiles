@@ -58,3 +58,6 @@
 
 (package! dap-mode
   :recipe (:host github :repo "emacs-lsp/dap-mode" :files ("*.el")))
+
+(package! treemacs-all-the-icons
+  :recipe (:host github :repo "Alexander-Miller/treemacs" :files ("src/extra/treemacs-all-the-icons.el")))

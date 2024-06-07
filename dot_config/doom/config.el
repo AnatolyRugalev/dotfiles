@@ -104,3 +104,10 @@
         (kbd "gz") 'evil-jump-backward
         (kbd "gf") 'evil-jump-forward
 )
+
+(setq
+ mac-option-modifier 'meta
+ mac-command-modifier 'control
+ mac-control-modifier 'super)
+
+(setq vterm-timer-delay 0.005)

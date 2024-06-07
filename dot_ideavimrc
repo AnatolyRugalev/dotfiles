@@ -85,15 +85,6 @@ map gd <Action>(GotoDeclaration)
 map gD <Action>(GotoTypeDeclaration)
 map gw <Action>(SelectInProjectView)
 
-nnoremap GG G
-map Gu <Action>(FindUsages)
-map Gs <Action>(GotoSymbol)
-map Gn <Action>(GotoClass)
-map Gf <Action>(GotoFile)
-map Gl <Action>(RecentLocations)
-map Gr <Action>(RecentFiles)
-map GR <Action>(RecentChangedFiles)
-
 " Tool Windows
 call CtrlActionNI("F", "JumpToLastWindow")
 call CtrlActionNI("X", "HideAllWindows")
@@ -124,13 +115,16 @@ else
 endif
 
 " Tabs
-call CtrlActionNI('W', 'CloseContent')
-call CtrlActionNI('L', 'NextTab')
-call CtrlActionNI('H', 'PreviousTab')
+map <D-Q> <Action>(CloseContent)
+map J <Action>(NextTab)
+map K <Action>(PreviousTab)
 
 " Splitters
 call CtrlActionNI('J', 'NextSplitter')
 call CtrlActionNI('K', 'PrevSplitter')
+
+map L <Action>(com.mnw.tabmover.actions.MoveFocusToNextWindow)
+map H <Action>(com.mnw.tabmover.actions.MoveFocusToPreviousWindow)
 
 " Ataman Plugin
 map <Space> <Action>(LeaderAction)
