@@ -97,10 +97,6 @@
      doom-variable-pitch-font (font-spec :family "MesloLGM Nerd Font Mono" :size 13 :weight 'medium))
 
 (evil-define-key 'normal 'global
-        (kbd "H") 'evil-window-left
-        (kbd "J") 'evil-window-down
-        (kbd "K") 'evil-window-up
-        (kbd "L") 'evil-window-right
         (kbd "gz") 'evil-jump-backward
         (kbd "gf") 'evil-jump-forward
 )
@@ -111,3 +107,12 @@
  mac-control-modifier 'super)
 
 (setq vterm-timer-delay 0.005)
+
+(global-set-key (kbd "C-S-c") #'copy-to-clipboard)
+(global-set-key (kbd "C-S-v") #'paste-from-clipboard)
+
+(setq projectile-project-search-path '("~/projects/" "~/code/"))
+(setq mouse-wheel-progressive-speed nil)
+
+(use-package all-the-icons
+  :if (display-graphic-p))
