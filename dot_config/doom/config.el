@@ -118,3 +118,10 @@
 
 (use-package all-the-icons
   :if (display-graphic-p))
+
+(use-package super-save
+  :ensure t
+  :config
+  (super-save-mode +1)
+  (setq super-save-auto-save-when-idle t)
+)
