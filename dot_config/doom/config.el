@@ -114,5 +114,7 @@
 (setq projectile-project-search-path '("~/projects/" "~/code/"))
 (setq mouse-wheel-progressive-speed nil)
 
+(require 'protobuf-mode)
+
 (use-package all-the-icons
   :if (display-graphic-p))
