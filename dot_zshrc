@@ -1,7 +1,7 @@
 PNPPSHOST=$(hostname)
 eval "$(oh-my-posh init zsh --config $HOME/.config/zsh/config.omp.json)"
 
-PATH=$PATH:$HOME/bin:$HOME/go/bin:$HOME/bin-local:$HOME/.config/emacs/bin
+PATH=$PATH:$HOME/bin:$HOME/bin-local:$HOME/.config/emacs/bin
 EDITOR=nvim
 
 ## History file configuration
@@ -18,6 +18,8 @@ setopt share_history          # share command history data
 
 setopt NO_BEEP
 
+autoload -Uz compinit
+compinit
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	source /usr/share/zsh-antidote/antidote.zsh
@@ -34,3 +36,9 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
 bindkey "^[^?" backward-kill-word
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. $HOME/.asdf/plugins/golang/set-env.zsh
