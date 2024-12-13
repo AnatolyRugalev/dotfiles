@@ -125,3 +125,15 @@
   (super-save-mode +1)
   (setq super-save-auto-save-when-idle t)
 )
+
+(map! :leader
+      "gP" #'magit-push
+      "gp" #'magit-pull-from-upstream
+      "gs" #'magit-stash
+      "gS" #'magit-stash-apply
+      "gF" #'magit-fetch
+      "gn" #'magit-branch-or-checkout
+      "gL" #'magit-log
+      "gR" #'magit-reset
+)
+
