@@ -50,7 +50,6 @@
 ;; (unpin! t)
 
 (package! protobuf-mode)
-(package! super-save)
 
 (package! lsp-treemacs
   :recipe (:host github :repo "emacs-lsp/lsp-treemacs" :files ("*.el")))
@@ -60,3 +59,9 @@
 
 (package! treemacs-all-the-icons
   :recipe (:host github :repo "Alexander-Miller/treemacs" :files ("src/extra/treemacs-all-the-icons.el")))
+
+(package! copilot
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
+
+(package! gptel)
+

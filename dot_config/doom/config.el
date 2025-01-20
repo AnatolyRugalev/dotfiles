@@ -42,7 +42,6 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
@@ -86,9 +85,7 @@
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
-(lsp-treemacs-sync-mode 1)
-
-(require 'dap-dlv-go)
+(lsp-treemacs-sync-mode )
 
 (setq display-line-numbers-type 'relative)
 
@@ -97,43 +94,81 @@
      doom-variable-pitch-font (font-spec :family "MesloLGM Nerd Font Mono" :size 13 :weight 'medium))
 
 (evil-define-key 'normal 'global
-        (kbd "gz") 'evil-jump-backward
-        (kbd "gf") 'evil-jump-forward
+    (kbd "gz") 'evil-jump-backward
+    (kbd "gf") 'evil-jump-forward
+	(kbd "U") 'evil-redo
+)
+
+(evil-define-key 'visual 'global
+    [tab] 'evil-shift-right
+    [backtab] 'evil-shift-left
+)
+
+(evil-define-key 'normal 'global
+    [tab] 'evil-shift-right
+    [backtab] 'evil-shift-left
 )
 
 (setq
- mac-option-modifier 'meta
- mac-command-modifier 'control
- mac-control-modifier 'super)
+mac-option-modifier 'meta
+mac-command-modifier 'control
+mac-control-modifier 'super)
 
 (setq vterm-timer-delay 0.005)
 
-(global-set-key (kbd "C-S-c") #'copy-to-clipboard)
-(global-set-key (kbd "C-S-v") #'paste-from-clipboard)
-
-(setq projectile-project-search-path '("~/projects/" "~/code/"))
+(setq projectile-project-search-path '("~/projects/" "~/code/" "/mnt/solid/"))
 (setq mouse-wheel-progressive-speed nil)
 
-(require 'protobuf-mode)
+(map!
+      :leader
+      :desc "Push" "gP" #'magit-push-current)
 
 (use-package all-the-icons
   :if (display-graphic-p))
 
-(use-package super-save
-  :ensure t
-  :config
-  (super-save-mode +1)
-  (setq super-save-auto-save-when-idle t)
-)
+(add-hook 'go-mode-hook 'lsp-deferred)
 
-(map! :leader
-      "gP" #'magit-push
-      "gp" #'magit-pull-from-upstream
-      "gs" #'magit-stash
-      "gS" #'magit-stash-apply
-      "gF" #'magit-fetch
-      "gn" #'magit-branch-or-checkout
-      "gL" #'magit-log
-      "gR" #'magit-reset
-)
+(setq copilot-indent-offset-warning-disable t)
+(setq scroll-margin 10)
 
+(add-hook 'go-mode-hook (lambda () (add-hook 'before-save-hook #'gofmt-before-save t t)))
+
+(map! :map dap-mode-map
+      :leader
+      :prefix ("d" . "dap")
+      ;; basics
+      :desc "dap next"          "n" #'dap-next
+      :desc "dap step in"       "i" #'dap-step-in
+      :desc "dap step out"      "o" #'dap-step-out
+      :desc "dap continue"      "c" #'dap-continue
+      :desc "dap hydra"         "h" #'dap-hydra
+      :desc "dap debug restart" "r" #'dap-debug-restart
+      :desc "dap debug"         "s" #'dap-debug
+
+      ;; debug
+      :prefix ("dd" . "Debug")
+      :desc "dap debug recent"  "r" #'dap-debug-recent
+      :desc "dap debug last"    "l" #'dap-debug-last
+
+      ;; eval
+      :prefix ("de" . "Eval")
+      :desc "eval"                "e" #'dap-eval
+      :desc "eval region"         "r" #'dap-eval-region
+      :desc "eval thing at point" "s" #'dap-eval-thing-at-point
+      :desc "add expression"      "a" #'dap-ui-expressions-add
+      :desc "remove expression"   "d" #'dap-ui-expressions-remove
+
+      :prefix ("db" . "Breakpoint")
+      :desc "dap breakpoint toggle"      "b" #'dap-breakpoint-toggle
+      :desc "dap breakpoint condition"   "c" #'dap-breakpoint-condition
+      :desc "dap breakpoint hit count"   "h" #'dap-breakpoint-hit-condition
+      :desc "dap breakpoint log message" "l" #'dap-breakpoint-log-message)
+
+
+(setq
+ gptel-model "gemini-pro"
+ gptel-backend (gptel-make-gemini "Gemini"
+                 :key "AIzaSyB3FBOT4LsOgYT0WU2B1GuDtNN_ahngXMc"
+                 :stream t))
+
+(add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
