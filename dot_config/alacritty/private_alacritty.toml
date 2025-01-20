@@ -745,9 +745,11 @@ key = "Z"
 mods = "Control|Shift"
 chars = "\u001B[90;6u"
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/bin/zsh"
 
 [window]
 decorations = "none"
+
+[terminal]
