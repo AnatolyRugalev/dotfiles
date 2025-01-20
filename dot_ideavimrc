@@ -12,6 +12,7 @@ set clipboard+=unnamed
 set clipboard+=ideaput
 set ideajoin
 set idearefactormode=visual
+set which-key
 
 function! CtrlRemap(letter)
     if g:os == "MacOS"
@@ -75,7 +76,9 @@ call CtrlActionNI("Q", "QuickJavaDoc")
 
 " Navigation
 map gz <Action>(Back)
+map [ <Action>(Back)
 map gf <Action>(Forward)
+map ] <Action>(Forward)
 map gn <Action>(GotoNextError)
 map gN <Action>(GotoPreviousError)
 map gi <Action>(GotoImplementation)
@@ -84,6 +87,7 @@ map gI <Action>(GotoSuperMethod)
 map gd <Action>(GotoDeclaration)
 map gD <Action>(GotoTypeDeclaration)
 map gw <Action>(SelectInProjectView)
+map gc <Action>(CommentByLineComment)
 
 " Tool Windows
 call CtrlActionNI("F", "JumpToLastWindow")
