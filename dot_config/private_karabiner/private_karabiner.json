@@ -1,10 +1,25 @@
 {
+    "global": { "show_in_menu_bar": false },
     "profiles": [
         {
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Alt -> Cmd+Ctrl",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "left_alt" },
+                                "to": {
+                                    "key_code": "left_control",
+                                    "modifiers": ["left_command"]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Ctrl+[H,L] to switch tabs in browsers",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -301,6 +316,10 @@
                         "vendor_id": 12951
                     },
                     "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "f16" }]
+                        },
                         {
                             "from": { "key_code": "left_command" },
                             "to": [{ "key_code": "left_control" }]

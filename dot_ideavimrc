@@ -2,7 +2,7 @@ source ~/.vimrc
 source ~/.vimrc.local
 
 set notimeout
-let mapleader = ";"
+let mapleader = " "
 set scrolloff=10
 set relativenumber
 Plug 'machakann/vim-highlightedyank'
@@ -61,19 +61,6 @@ call CtrlRemap('B')
 call CtrlRemap('N')
 call CtrlRemap('M')
 
-" Configuration management
-nnoremap <Leader>.a :e ~/.atamanrc.config<CR>
-nnoremap <Leader>.v :e ~/.ideavimrc<CR>
-nnoremap <Leader>.t :e ~/.tmux.conf<CR>
-nnoremap <Leader>.y :e ~/.config/yabai/yabairc<CR>
-nnoremap <Leader>.s :e ~/.config/skhd/skhdrc<CR>
-nnoremap <Leader>.k :e ~/.config/karabiner/karabiner.json<CR>
-map <Leader>.r <Action>(IdeaVim.ReloadVimRc.reload)
-
-call CtrlActionNI("E", "ShowErrorDescription")
-call CtrlActionNI("P", "ParameterInfo")
-call CtrlActionNI("Q", "QuickJavaDoc")
-
 " Navigation
 map gz <Action>(Back)
 map [ <Action>(Back)
@@ -88,6 +75,8 @@ map gd <Action>(GotoDeclaration)
 map gD <Action>(GotoTypeDeclaration)
 map gw <Action>(SelectInProjectView)
 map gc <Action>(CommentByLineComment)
+map gr <Action>(RecentFiles)
+map gh <Action>(ShowTypeBookmarks)
 
 " Tool Windows
 call CtrlActionNI("F", "JumpToLastWindow")
@@ -101,11 +90,9 @@ map n <Action>(FindNext)
 map N <Action>(FindPrevious)
 
 " Misc
-map <Leader>s <Action>(SaveAll)
 map u <Action>($Undo)
 map U <Action>($Redo)
-call CtrlActionNI('Z', '$Undo')
-call CtrlActionNI('R', '$Redo')
+
 if g:os == "MacOS"
     nnoremap <D-C> Y
     vnoremap <D-C> y
@@ -118,17 +105,73 @@ else
     inoremap <C-V> <C-R>+
 endif
 
-" Tabs
-map <D-Q> <Action>(CloseContent)
-map J <Action>(NextTab)
-map K <Action>(PreviousTab)
+map L <Action>(NextTab)
+map H <Action>(PreviousTab)
+map J <Action>(MethodDown)
+map K <Action>(MethodUp)
 
-" Splitters
-call CtrlActionNI('J', 'NextSplitter')
-call CtrlActionNI('K', 'PrevSplitter')
-
-map L <Action>(com.mnw.tabmover.actions.MoveFocusToNextWindow)
-map H <Action>(com.mnw.tabmover.actions.MoveFocusToPreviousWindow)
+call CtrlActionNI("E", "ShowErrorDescription")
+call CtrlActionNI("P", "ParameterInfo")
+call CtrlActionNI("Q", "QuickJavaDoc")
 
 " Ataman Plugin
 map <Space> <Action>(LeaderAction)
+
+" Configuration management
+"map <Leader>.ve :e ~/.ideavimrc<CR>
+"map <Leader>.vr <Action>(IdeaVim.ReloadVimRc.reload)
+"map <Leader>.vt <Action>(VimFindActionIdAction)
+"
+"map <Leader><Leader> <Action>(GotoFile)
+"map <Leader>sa <Action>(GotoAction)
+"map <Leader>sc <Action>(GotoClass)
+"map <Leader>sf <Action>(GotoFile)
+"map <Leader>ss <Action>(GotoSymbol)
+"map <Leader>sF <Action>(FindInPath)
+"
+"map <Leader>bs <Action>(SaveAll)
+"map <Leader>bd <Action>(CloseContent)
+"
+"map <Leader>wv <Action>(SplitVertically)
+"map <Leader>ws <Action>(SplitHorizontally)
+"map <Leader>wl <Action>(NextSplitter)
+"map <Leader>wh <Action>(PrevSplitter)
+"map <Leader>wd <Action>(CloseAllEditors)
+"
+"map <Leader>op <Action>(SelectInProjectView)
+"map <Leader>oP <Action>($LRU)
+"
+"map <Leader>ga <Action>(ChangesView.AddUnversioned)
+"map <Leader>gA <Action>(Git.Stage.Add.Tracked)
+"map <Leader>gb <Action>(Git.Branches)
+"map <Leader>bn <Action>(Git.CreateNewBranch)
+"map <Leader>gc <Action>(Git.Commit.Stage)
+"map <Leader>gf <Action>(Git.Fetch)
+"map <Leader>gp <Action>(Git.Pull)
+"map <Leader>gP <Action>(Git.Push)
+"map <Leader>gT <Action>(Git.Tag)
+"map <Leader>go <Action>(Github.Open.In.Browser)
+"map <Leader>gy <Action>(Github.Copy.Link.To.Github)
+"map <Leader>gs <Action>(Git.Stash)
+"map <Leader>gS <Action>(Git.Unstash)
+"map <Leader>gl <Action>(Vcs.Show.Log)
+"map <Leader>gR <Action>(ChangesView.Revert)
+"
+"map <Leader>ca <Action>(ShowIntentionActions)
+"map <Leader>cc <Action>(CommentByLineComment)
+"map <Leader>cl <Action>(ReformatCode)
+"map <Leader>cr <Action>(RenameElement)
+"map <Leader>cR <Action>(RefactoringMenu)
+"
+"map <Leader>fn <Action>(NewElement)
+"map <Leader>fr <Action>(RenameFile)
+"map <Leader>fs <Action>(Synchronize)
+"map <Leader>ff <Action>(ShowNavBar)
+"map <Leader>fd <Action>($Delete)
+"
+"map <Leader>xv <Action>(Tool_Go_go vet)
+"map <Leader>xt <Action>(Tool_Go_go mod tidy)
+"map <Leader>xm <Action>(Tool_Nest_mbimports)
+"map <Leader>xn <Action>(Tool_Nest_nest)
+"map <Leader>xl <Action>(Tool_Nest_mblint)
+"map <Leader>xe <Action>(Javascript.Linters.EsLint.Fix)
