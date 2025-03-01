@@ -747,7 +747,7 @@ chars = "\u001B[90;6u"
 
 [terminal.shell]
 args = ["--login"]
-program = "/usr/bin/nu"
+program = "nu"
 
 [window]
 decorations = "none"
