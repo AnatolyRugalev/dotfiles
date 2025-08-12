@@ -1,18 +1,13 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
-
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 after-startup-command = [
-	'exec-and-forget borders active_color=0xffb700ff inactive_color=0xfff3d6ff width=6.0',
+# 	'exec-and-forget borders active_color=0xffb700ff inactive_color=0xfff3d6ff width=6.0',
 	'exec-and-forget sketchybar'
 ]
 
@@ -73,17 +68,17 @@ outer.top =		   40
 outer.right =      3
 
 [workspace-to-monitor-force-assignment]
-    1 = ['main']                          
-    2 = ['main']                       
-    3 = ['main']                          
+    1 = ['main']
+    2 = ['main']
+    3 = ['main']
     4 = []
     5 = []
     6 = []
-    7 = []                       
-    8 = []                       
-    9 = []                       
-    10 = ['secondary']                       
-                                 
+    7 = []
+    8 = []
+    9 = []
+    10 = ['secondary']
+
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -115,7 +110,6 @@ outer.right =      3
 # end tell'
 # '''
 
-cmd-h = [] # Disable
 cmd-alt-h = [] # Disable
 
 cmd-ctrl-slash = 'layout tiles horizontal vertical'
@@ -213,5 +207,3 @@ cmd-ctrl-shift-l = ['join-with right', 'mode main']
 down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
-
-

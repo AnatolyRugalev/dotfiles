@@ -1,0 +1,57 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    }
+  },
+  "icon_theme": "Material Icon Theme",
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "buffer_font_family": "JetBrains Mono",
+  "ui_font_size": 16,
+  "buffer_font_size": 13,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Fleet Dark"
+  },
+  "relative_line_numbers": true,
+  "vim_mode": true,
+  "vim": {},
+  "autosave": "on_focus_change",
+  "restore_on_startup": "none",
+  "minimap": {
+    "show": "never"
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "tabs": {
+    "git_status": true,
+    "show_diagnostics": "errors"
+  },
+  "drag_and_drop_selection": {
+    "enabled": false
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 750,
+      "min_column": 80
+    },
+    "hunk_style": "staged_hollow"
+  },
+  "multi_cursor_modifier": "cmd_or_ctrl",
+  "use_smartcase_search": true
+}

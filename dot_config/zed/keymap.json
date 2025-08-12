@@ -1,0 +1,101 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "shift-u": "vim::Redo",
+
+      "space b s": "workspace::SaveAll",
+      "space b d": "pane::CloseActiveItem",
+      "space b b": "pane::AlternateFile",
+
+      "space w v": "pane::SplitVertical",
+      "space w s": "pane::SplitHorizontal",
+      "space w d": "pane::CloseAllItems",
+
+      "shift-h": "pane::ActivatePreviousItem",
+      "cmd-shift-h": "pane::SwapItemLeft",
+      "shift-l": "pane::ActivateNextItem",
+      "cmd-shift-l": "pane::SwapItemRight",
+
+      "space space": "file_finder::Toggle",
+      "space s a": "command_palette::Toggle",
+      "space s s": "project_symbols::Toggle",
+
+      "space g b": "git::Branch",
+      "space g p": "git::Pull",
+      "space g f": "git::Fetch",
+      "space g B": "git::Blame",
+      "space g P": "git::Push",
+      "space g g": "git_panel::ToggleFocus",
+      "space g c": "git::Commit",
+      "space g A": "git::StageAll",
+
+      "space o P": "projects::OpenRecent",
+
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+
+      "space f f": "pane::RevealInProjectPanel",
+
+      "space x r": "task::Rerun",
+      "space x t": ["task::Spawn", { "task_name": "go mod tidy" }],
+      "space x v": ["task::Spawn", { "task_name": "go vet" }],
+      "space x n p": ["task::Spawn", { "task_name": "nest pb go" }],
+      "space x n P": ["task::Spawn", { "task_name": "nest pb" }],
+      "space x b f": ["task::Spawn", { "task_name": "buf format" }],
+
+      "?": "buffer_search::DeployReplace",
+
+      "g z": "pane::GoBack",
+      "g f": "pane::GoForward"
+    }
+  },
+  {
+    "context": "ProjectPanel && !editing",
+    "bindings": {
+      "n": "project_panel::NewFile",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "Dock || (VimControl && !menu)",
+    "bindings": {
+      "space w H": "workspace::ToggleLeftDock",
+      "space w L": "workspace::ToggleRightDock",
+      "space w J": "workspace::ToggleBottomDock",
+      "space w h": "workspace::ActivatePaneLeft",
+      "space w l": "workspace::ActivatePaneRight",
+      "space w k": "workspace::ActivatePaneUp",
+      "space w j": "workspace::ActivatePaneDown",
+      "space w d": "workspace::CloseActiveDock",
+
+      "cmd-h": "workspace::ActivatePaneLeft",
+      "cmd-l": "workspace::ActivatePaneRight",
+      "cmd-j": "workspace::ActivatePaneDown",
+      "cmd-k": "workspace::ActivatePaneUp"
+    }
+  }
+]
